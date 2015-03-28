@@ -85,11 +85,10 @@ var App = (function (_React$Component2) {
 				var _this = this;
 
 				ListingQuery.find().then(function (items) {
-					alert("got back listings!");
-					console.log("got back listings:", items);
 					var state = _this.state;
 					_this.setState(state.set("listings", items));
 				}, function (ex) {
+					alert("something went wrong!");
 					console.log("got back error:", ex);
 					var state = _this.state;
 					_this.setState(state.set("error", ex));
@@ -103,6 +102,21 @@ var App = (function (_React$Component2) {
 		},
 		render: {
 			value: function render() {
+				var listings = this.state.get("listings");
+				if (listings) {
+					listings = listings.map(function (l) {
+						return {
+							id: l.get("id"),
+							title: l.get("title"),
+							start: l.get("start"),
+							end: l.get("end"),
+							description: l.get("description"),
+							active: l.get("active"),
+							image: l.get("image") };
+					});
+				}
+
+				console.log("got back parsed listings:", listings);
 				return React.createElement(
 					"div",
 					null,

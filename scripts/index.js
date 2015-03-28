@@ -46,11 +46,10 @@ class App extends React.Component {
 	}
 	updateData() {
 		ListingQuery.find().then((items) => {
-			alert('got back listings!');
-			console.log('got back listings:', items);
 			var state = this.state;
 			this.setState(state.set('listings', items));
 		}, (ex) => {
+			alert('something went wrong!');
 			console.log('got back error:', ex);
 			var state = this.state;
 			this.setState(state.set('error', ex));
@@ -59,7 +58,24 @@ class App extends React.Component {
 	componentWillMount() {
 		this.updateData();
 	}
+
 	render() {
+		var listings = this.state.get('listings');
+		if (listings) {
+			listings = listings.map((l) => {
+				return {
+					id: l.get('id'),
+					title: l.get('title'),
+					start: l.get('start'),
+					end: l.get('end'),
+					description: l.get('description'),
+					active: l.get('active'),
+					image: l.get('image'),
+				};
+			});
+		}
+
+		console.log('got back parsed listings:', listings);
 		return (
 			<div>
 				<NavBar />
