@@ -24,7 +24,7 @@ class NavBar extends React.Component {
 				<Bootstrap.NavItem eventKey={2} href='#'>
 					<Bootstrap.Glyphicon glyph='plus' /> Publish</Bootstrap.NavItem>
 
-				
+
 			</Bootstrap.Nav>
 			</Bootstrap.Navbar>
 		);
@@ -41,19 +41,21 @@ var data = [
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = Immutable.Map({
-			login: false, loading: false, listings: undefined, error: null
-		});
+		this.state = {
+			data: Immutable.Map({
+				login: false, loading: false, listings: undefined, error: null
+			})
+		}
 	}
 	updateData() {
 		ListingQuery.find().then((items) => {
-			var state = this.state;
-			this.setState(state.set('listings', items));
+			var data = this.state.data;
+			this.setState({ data: data.set('listings', items) });
 		}, (ex) => {
 			alert('something went wrong!');
 			console.log('got back error:', ex);
-			var state = this.state;
-			this.setState(state.set('error', ex));
+			var data = this.state.data;
+			this.setState({ data: data.set('error', ex) });
 		});
 	}
 	componentWillMount() {
@@ -61,7 +63,7 @@ class App extends React.Component {
 	}
 
 	render() {
-		var listings = this.state.get('listings');
+		var listings = this.state.data.get('listings');
 		if (listings) {
 			listings = listings.map((l) => {
 				return {

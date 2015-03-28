@@ -72,9 +72,11 @@ var App = (function (_React$Component2) {
 		_classCallCheck(this, App);
 
 		_get(Object.getPrototypeOf(App.prototype), "constructor", this).call(this, props);
-		this.state = Immutable.Map({
-			login: false, loading: false, listings: undefined, error: null
-		});
+		this.state = {
+			data: Immutable.Map({
+				login: false, loading: false, listings: undefined, error: null
+			})
+		};
 	}
 
 	_inherits(App, _React$Component2);
@@ -85,13 +87,13 @@ var App = (function (_React$Component2) {
 				var _this = this;
 
 				ListingQuery.find().then(function (items) {
-					var state = _this.state;
-					_this.setState(state.set("listings", items));
+					var data = _this.state.data;
+					_this.setState({ data: data.set("listings", items) });
 				}, function (ex) {
 					alert("something went wrong!");
 					console.log("got back error:", ex);
-					var state = _this.state;
-					_this.setState(state.set("error", ex));
+					var data = _this.state.data;
+					_this.setState({ data: data.set("error", ex) });
 				});
 			}
 		},
@@ -102,7 +104,7 @@ var App = (function (_React$Component2) {
 		},
 		render: {
 			value: function render() {
-				var listings = this.state.get("listings");
+				var listings = this.state.data.get("listings");
 				if (listings) {
 					listings = listings.map(function (l) {
 						return {
