@@ -2,7 +2,7 @@ var React = require('react');
 var { Panel }  = require('react-bootstrap');
 
 var Moment = require('moment');
-
+var dummyImgSrc = 'http://cdn.shopify.com/s/files/1/0228/4239/collections/placeholder_large.jpg';
 module.exports = React.createClass({
 	render: function() {
 		if (!this.props.data) {
@@ -10,11 +10,16 @@ module.exports = React.createClass({
 		}
 
 		var elems = this.props.data.map((e) => {
+			var date =  Moment(e.start).fromNow();
+			var imgSrc = dummyImgSrc;
 			var title = <h1> { e.title } </h1>;
-			var footer = <span> { Moment(e.start).fromNow() } </span>
+			var footer = <span> { date } </span>
 			return (
-				<Panel header={title} footer={footer}>
-					{ e.description }
+				<Panel header={title} footer={footer} style={
+					{ marginRight: 'auto', marginLeft: 'auto', maxWidth: '70%' }
+				}>
+					<img src={imgSrc} style={ { width: '100%' } } />
+					<div>{ e.description }</div>
 				</Panel>
 			);
 		});

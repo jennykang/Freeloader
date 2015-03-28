@@ -74,7 +74,7 @@ var App = (function (_React$Component2) {
 		_get(Object.getPrototypeOf(App.prototype), "constructor", this).call(this, props);
 		this.state = {
 			data: Immutable.Map({
-				login: false, loading: false, listings: undefined, error: null
+				login: false, loading: false, location: undefined, listings: undefined, error: null
 			})
 		};
 	}
@@ -126,6 +126,24 @@ var App = (function (_React$Component2) {
 					React.createElement(
 						"div",
 						{ className: "container" },
+						React.createElement(
+							Bootstrap.Jumbotron,
+							null,
+							React.createElement(
+								"p",
+								null,
+								"This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
+							),
+							React.createElement(
+								"p",
+								null,
+								React.createElement(
+									Bootstrap.Button,
+									{ bsStyle: "primary" },
+									"Learn more"
+								)
+							)
+						),
 						React.createElement(ListingView, { data: listings })
 					)
 				);
@@ -43030,7 +43048,7 @@ var _require = require("react-bootstrap");
 var Panel = _require.Panel;
 
 var Moment = require("moment");
-
+var dummyImgSrc = "http://cdn.shopify.com/s/files/1/0228/4239/collections/placeholder_large.jpg";
 module.exports = React.createClass({
 	displayName: "exports",
 
@@ -43044,6 +43062,8 @@ module.exports = React.createClass({
 		}
 
 		var elems = this.props.data.map(function (e) {
+			var date = Moment(e.start).fromNow();
+			var imgSrc = dummyImgSrc;
 			var title = React.createElement(
 				"h1",
 				null,
@@ -43055,13 +43075,18 @@ module.exports = React.createClass({
 				"span",
 				null,
 				" ",
-				Moment(e.start).fromNow(),
+				date,
 				" "
 			);
 			return React.createElement(
 				Panel,
-				{ header: title, footer: footer },
-				e.description
+				{ header: title, footer: footer, style: { marginRight: "auto", marginLeft: "auto", maxWidth: "70%" } },
+				React.createElement("img", { src: imgSrc, style: { width: "100%" } }),
+				React.createElement(
+					"div",
+					null,
+					e.description
+				)
 			);
 		});
 

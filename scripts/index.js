@@ -43,7 +43,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			data: Immutable.Map({
-				login: false, loading: false, listings: undefined, error: null
+				login: false, loading: false, location: undefined, listings: undefined, error: null
 			})
 		}
 	}
@@ -58,6 +58,7 @@ class App extends React.Component {
 			this.setState({ data: data.set('error', ex) });
 		});
 	}
+
 	componentWillMount() {
 		this.updateData();
 	}
