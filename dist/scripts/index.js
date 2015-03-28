@@ -33,10 +33,10 @@ var NavBar = (function (_React$Component) {
 			value: function render() {
 				return React.createElement(
 					Bootstrap.Navbar,
-					{ brand: "FreeLoader" },
+					{ toggleNavKey: 3, brand: "FreeLoader" },
 					React.createElement(
 						Bootstrap.Nav,
-						null,
+						{ eventKey: 3 },
 						React.createElement(
 							Bootstrap.NavItem,
 							{ eventKey: 1, href: "#", active: true },
@@ -35031,13 +35031,15 @@ module.exports = React.createClass({
 	displayName: "exports",
 
 	render: function render() {
-		var elems = this.props.data.map(function (e) {
-			return React.createElement(
-				"h3",
+		var elems = [];
+		this.props.data.forEach(function (e) {
+			elems.push(React.createElement(
+				"div",
 				null,
-				"e.title "
-			);
+				"Hello"
+			));
 		});
+
 		return React.createElement(
 			"div",
 			null,
