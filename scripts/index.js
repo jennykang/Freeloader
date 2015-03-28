@@ -10,8 +10,9 @@ Parse.initialize("YzTovlpCemH5MQyxGSHrKD46Y0Nfk2bnRa8q3fh1", "CtWhDYoUpcLqEI40DA
 
 class NavBar extends React.Component {
 	render() {
+		var logo = <img src="../images/logolong.gif"/>
 		return (
-			<Bootstrap.Navbar toggleNavKey={3} brand='FreeLoader' >
+			<Bootstrap.Navbar toggleNavKey={3} brand={logo}>
 			<Bootstrap.Nav eventKey={3}>
 				<Bootstrap.NavItem eventKey={1} href='#' active>
 					<Bootstrap.Glyphicon glyph='record' /> Find</Bootstrap.NavItem>
