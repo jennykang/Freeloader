@@ -1,8 +1,10 @@
 var React = window.React = require('react');
 var Bootstrap = require('react-bootstrap');
 
+var Listing = require('./components/listing');
+
 window.Parse = require('parse').Parse;
-var ParseReact = require('parse-react/src/ParseReact');
+// var ParseReact = require('parse-react/src/ParseReact');
 
 Parse.initialize("YzTovlpCemH5MQyxGSHrKD46Y0Nfk2bnRa8q3fh1", "CtWhDYoUpcLqEI40DAESdCCjSWqvmUDavbPbKAPD");
 
@@ -23,15 +25,12 @@ class NavBar extends React.Component {
 	}
 }
 
-class Listings extends React.Component {
-	render() {
-		return (
-			<div>
-				<h1> Listings ... </h1>
-			</div>
-		);
-	}
-}
+var data = [
+	{title: 'sample test', active: true, description: 'asdf asd fasdf asd fasd'},
+	{title: 'sample test', active: true, description: 'asdf asd fasdf asd fasd'},
+	{title: 'sample test', active: true, description: 'asdf asd fasdf asd fasd'},
+	{title: 'sample test', active: true, description: 'asdf asd fasdf asd fasd'},
+];
 
 class App extends React.Component {
 	render() {
@@ -39,7 +38,7 @@ class App extends React.Component {
 			<div>
 				<NavBar />
 				<div className="container">
-					<Listings />
+					<Listing data={data} />
 				</div>
 			</div>
 		);

@@ -1,6 +1,12 @@
 var React = require('react');
-export class Listing extends React.Component {
-	render() {
-		return (<h1>Hello world!</h1>);
+
+module.exports = React.createClass({
+	render: function() {
+		var elems = this.props.data.map((e) => { return  (<h3>e.title </h3>); });
+		return (
+			<div>
+				{elems}
+			</div>
+		);
 	}
-}
+});
