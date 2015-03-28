@@ -37,12 +37,13 @@ var NavBar = (function (_React$Component) {
 	_createClass(NavBar, {
 		render: {
 			value: function render() {
+				var logo = React.createElement("img", { src: "../images/logolong.gif" });
 				return React.createElement(
 					Bootstrap.Navbar,
-					{ brand: "FreeLoader", inverse: true },
+					{ toggleNavKey: 3, brand: logo, inverse: true },
 					React.createElement(
 						Bootstrap.Nav,
-						null,
+						{ eventKey: 3 },
 						React.createElement(
 							Bootstrap.NavItem,
 							{ eventKey: 1, href: "#", active: true },

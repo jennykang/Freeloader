@@ -14,9 +14,10 @@ var ListingQuery = new Parse.Query(ListingObject);
 
 class NavBar extends React.Component {
 	render() {
+		var logo = <img src="../images/logolong.gif"/>
 		return (
-			<Bootstrap.Navbar brand='FreeLoader' inverse>
-			<Bootstrap.Nav>
+			<Bootstrap.Navbar toggleNavKey={3} brand={logo} inverse>
+			<Bootstrap.Nav eventKey={3}>
 				<Bootstrap.NavItem eventKey={1} href='#' active>
 					<Bootstrap.Glyphicon glyph='record' /> Find</Bootstrap.NavItem>
 
