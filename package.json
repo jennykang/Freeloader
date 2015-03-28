@@ -1,0 +1,12 @@
+{
+  "name": "freeloader",
+  "version": "0.0.1",
+  "author": "Hamza Zia",
+  "description": "LBS freeloader",
+  "dependencies": {
+    "babel": "^4.7.16",
+    "react": "^0.13.1",
+    "systemjs": "^0.16.6"
+  },
+  "devDependencies": {}
+}
