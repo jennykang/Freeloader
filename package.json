@@ -5,6 +5,7 @@
   "description": "LBS freeloader",
   "dependencies": {
     "immutable": "^3.7.0",
+    "moment": "^2.9.0",
     "parse": "^1.4.1",
     "parse-react": "^0.1.0",
     "react": "^0.13.1",

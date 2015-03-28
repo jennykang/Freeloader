@@ -83,7 +83,7 @@ class App extends React.Component {
 			<div>
 				<NavBar />
 				<div className="container">
-					<ListingView data={data} />
+					<ListingView data={listings} />
 				</div>
 			</div>
 		);
