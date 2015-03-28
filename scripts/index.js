@@ -24,6 +24,7 @@ class NavBar extends React.Component {
 				<Bootstrap.NavItem eventKey={2} href='#'>
 					<Bootstrap.Glyphicon glyph='plus' /> Publish</Bootstrap.NavItem>
 
+				
 			</Bootstrap.Nav>
 			</Bootstrap.Navbar>
 		);
