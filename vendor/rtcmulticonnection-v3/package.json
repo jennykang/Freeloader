@@ -1,0 +1,72 @@
+{
+  "name": "rtcmulticonnection-v3",
+  "preferGlobal": true,
+  "version": "3.0.1",
+  "author": {
+    "name": "Muaz Khan",
+    "email": "muazkh@gmail.com",
+    "url": "http://www.muazkhan.com/"
+  },
+  "description": "RTCMultiConnection is a WebRTC JavaScript wrapper library runs top over RTCPeerConnection API to support all possible peer-to-peer features.",
+  "scripts": {
+    "start": "node Signaling-Server.js"
+  },
+  "main": "./Signaling-Server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muaz-khan/RTCMultiConnection.git"
+  },
+  "keywords": [
+    "peer-to-peer",
+    "peer2peer",
+    "peer",
+    "webrtc",
+    "rtcmulticonnection",
+    "webrtc-library",
+    "library",
+    "javascript",
+    "chrome",
+    "firefox",
+    "opera",
+    "ie",
+    "internet-explorer",
+    "android",
+    "rtcweb",
+    "rtcmulticonnection.js",
+    "multirtc",
+    "webrtc-experiment",
+    "javascript-library",
+    "muaz",
+    "muaz-khan"
+  ],
+  "dependencies": {
+    "socket.io": "0.9.x"
+  },
+  "analyze": false,
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muaz-khan/RTCMultiConnection/issues",
+    "email": "muazkh@gmail.com"
+  },
+  "homepage": "http://www.rtcmulticonnection.org/changes-log/",
+  "_from": "rtcmulticonnection-v3@*",
+  "_id": "rtcmulticonnection-v3@3.0.1",
+  "_shasum": "aad7fd0d3c8cf3d54dceda9ff162a141b1e05c58",
+  "_npmVersion": "1.4.21",
+  "_npmUser": {
+    "name": "muaz-khan",
+    "email": "muazkh@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "muaz-khan",
+      "email": "muazkh@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "aad7fd0d3c8cf3d54dceda9ff162a141b1e05c58",
+    "tarball": "http://registry.npmjs.org/rtcmulticonnection-v3/-/rtcmulticonnection-v3-3.0.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/rtcmulticonnection-v3/-/rtcmulticonnection-v3-3.0.1.tgz"
+}

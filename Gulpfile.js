@@ -46,7 +46,13 @@ gulp.task('bootstrap', function() {
 	).pipe(gulp.dest('./dist/fonts/'));
 });
 
-gulp.task('vendor', ['bootstrap']);
+gulp.task('modules', function() {
+	return gulp.src('./vendor/**/*',
+		{ base: './vendor' }
+	).pipe(gulp.dest('./dist/vendor/'));
+});
+
+gulp.task('vendor', ['bootstrap', 'modules']);
 
 gulp.task('images', function() {
 	return gulp.src('./images/*')

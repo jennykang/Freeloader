@@ -1,9 +1,12 @@
 var React = window.React = require('react');
 var Bootstrap = require('react-bootstrap');
 
+require('rtcmulticonnection-v3/RTCMultiConnection.js');
+
 var Immutable = require('immutable');
 
-var ListingView = require('./components/listing');
+var ListingView = require('./components/listings');
+var Listing = require('./components/listing');
 var LoginView = require('./components/login');
 
 var Parse = require('parse').Parse;
@@ -25,7 +28,6 @@ class NavBar extends React.Component {
 				<Bootstrap.NavItem eventKey={2} href='#'>
 					<Bootstrap.Glyphicon glyph='plus' /> Publish</Bootstrap.NavItem>
 
-
 			</Bootstrap.Nav>
 			</Bootstrap.Navbar>
 		);
@@ -37,10 +39,13 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			data: Immutable.Map({
-				login: false, loading: false, location: undefined, listings: undefined, error: null
+				login: false, loading: false,
+				location: undefined, listings: undefined,
+				error: null, listing: null
 			})
 		}
 	}
+
 	updateData() {
 		ListingQuery.find().then((items) => {
 			var data = this.state.data;
@@ -57,6 +62,11 @@ class App extends React.Component {
 		this.updateData();
 	}
 
+	onListing(e) {
+		console.log('slected a listing!:', e);
+		this.setState({ data: this.state.data.set('listing', e) });
+	}
+
 	render() {
 		var listings = this.state.data.get('listings');
 		if (listings) {
@@ -69,18 +79,33 @@ class App extends React.Component {
 					description: l.get('description'),
 					active: l.get('active'),
 					image: l.get('image'),
+					_server: l
 				};
 			});
 		}
 
 		console.log('got back parsed listings:', listings);
+		var body = null;
+		var listing = this.state.data.get('listing');
+		if (listing) {
+			body = (
+				<div className="container">
+					<Listing data={listing} />
+				</div>
+			);
+		}
+		else {
+			body = (
+				<div className="container">
+					<LoginView />
+					<ListingView data={listings} onListing={this.onListing.bind(this)} />
+				</div>
+			);
+		}
 		return (
 			<div>
 				<NavBar />
-				<div className="container">
-					<LoginView />
-					<ListingView data={listings} />
-				</div>
+				{ body }
 			</div>
 		);
 	}

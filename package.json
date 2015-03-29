@@ -6,11 +6,13 @@
   "dependencies": {
     "immutable": "^3.7.0",
     "moment": "^2.9.0",
+    "node-uuid": "^1.4.3",
     "parse": "^1.4.1",
     "parse-react": "^0.1.0",
     "react": "^0.13.1",
     "react-bootstrap": "^0.19.1",
-    "rtc": "^3.2.5"
+    "rtc": "^3.2.5",
+    "rtcmulticonnection-v3": "^3.0.1"
   },
   "devDependencies": {
     "babelify": "^5.0.4",
