@@ -9,6 +9,9 @@ module.exports = React.createClass({
 		return (
 			<Jumbotron>
 				<h1>Hello, Freeloaders!</h1>
+				<p>
+Free loaders allows you to discover the buzz happening around you. We help charities, communities and businesses connect with the people who care. So download our app today and start broadcasting!
+				</p>
 				<p><Button bsStyle='primary'>Learn more</Button></p>
 			</Jumbotron>
 		);

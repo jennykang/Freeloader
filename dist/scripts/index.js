@@ -44592,6 +44592,11 @@ module.exports = React.createClass({
 			React.createElement(
 				"p",
 				null,
+				"Free loaders allows you to discover the buzz happening around you. We help charities, communities and businesses connect with the people who care. So download our app today and start broadcasting!"
+			),
+			React.createElement(
+				"p",
+				null,
 				React.createElement(
 					Button,
 					{ bsStyle: "primary" },
