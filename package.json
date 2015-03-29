@@ -9,7 +9,8 @@
     "parse": "^1.4.1",
     "parse-react": "^0.1.0",
     "react": "^0.13.1",
-    "react-bootstrap": "^0.19.1"
+    "react-bootstrap": "^0.19.1",
+    "rtc": "^3.2.5"
   },
   "devDependencies": {
     "babelify": "^5.0.4",

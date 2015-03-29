@@ -10,13 +10,16 @@ module.exports = React.createClass({
 		}
 
 		var elems = this.props.data.map((e) => {
-			var date =  Moment(e.start).fromNow();
-			var imgSrc = dummyImgSrc;
+			var date =  'Happening ' + Moment(e.start).fromNow();
+			// var imgSrc = dummyImgSrc;
+			var imgSrc = e.image ? e.image.url() : dummyImgSrc;
 			var title = <h1> { e.title } </h1>;
 			var footer = <span> { date } </span>
 			return (
 				<Panel header={title} footer={footer} style={
-					{ marginRight: 'auto', marginLeft: 'auto', maxWidth: '70%' }
+					{
+						marginRight: 'auto', marginLeft: 'auto', maxWidth: '70%',
+					}
 				}>
 					<img src={imgSrc} style={ { width: '100%' } } />
 					<div>{ e.description }</div>

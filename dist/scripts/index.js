@@ -15,6 +15,7 @@ var Bootstrap = require("react-bootstrap");
 var Immutable = require("immutable");
 
 var ListingView = require("./components/listing");
+var LoginView = require("./components/login");
 
 var Parse = require("parse").Parse;
 
@@ -64,8 +65,6 @@ var NavBar = (function (_React$Component) {
 
 	return NavBar;
 })(React.Component);
-
-var data = [{ title: "sample test", active: true, description: "asdf asd fasdf asd fasd" }, { title: "sample test", active: true, description: "asdf asd fasdf asd fasd" }, { title: "sample test", active: true, description: "asdf asd fasdf asd fasd" }, { title: "sample test", active: true, description: "asdf asd fasdf asd fasd" }];
 
 var App = (function (_React$Component2) {
 	function App(props) {
@@ -126,24 +125,7 @@ var App = (function (_React$Component2) {
 					React.createElement(
 						"div",
 						{ className: "container" },
-						React.createElement(
-							Bootstrap.Jumbotron,
-							null,
-							React.createElement(
-								"p",
-								null,
-								"This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
-							),
-							React.createElement(
-								"p",
-								null,
-								React.createElement(
-									Bootstrap.Button,
-									{ bsStyle: "primary" },
-									"Learn more"
-								)
-							)
-						),
+						React.createElement(LoginView, null),
 						React.createElement(ListingView, { data: listings })
 					)
 				);
@@ -156,7 +138,7 @@ var App = (function (_React$Component2) {
 
 React.render(React.createElement(App, null), document.body);
 
-},{"./components/listing":221,"immutable":3,"parse":5,"react":220,"react-bootstrap":56}],2:[function(require,module,exports){
+},{"./components/listing":221,"./components/login":222,"immutable":3,"parse":5,"react":220,"react-bootstrap":56}],2:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -43062,8 +43044,9 @@ module.exports = React.createClass({
 		}
 
 		var elems = this.props.data.map(function (e) {
-			var date = Moment(e.start).fromNow();
-			var imgSrc = dummyImgSrc;
+			var date = "Happening " + Moment(e.start).fromNow();
+			// var imgSrc = dummyImgSrc;
+			var imgSrc = e.image ? e.image.url() : dummyImgSrc;
 			var title = React.createElement(
 				"h1",
 				null,
@@ -43080,7 +43063,8 @@ module.exports = React.createClass({
 			);
 			return React.createElement(
 				Panel,
-				{ header: title, footer: footer, style: { marginRight: "auto", marginLeft: "auto", maxWidth: "70%" } },
+				{ header: title, footer: footer, style: {
+						marginRight: "auto", marginLeft: "auto", maxWidth: "70%" } },
 				React.createElement("img", { src: imgSrc, style: { width: "100%" } }),
 				React.createElement(
 					"div",
@@ -43094,6 +43078,45 @@ module.exports = React.createClass({
 			"div",
 			null,
 			elems
+		);
+	}
+});
+
+},{"moment":4,"react":220,"react-bootstrap":56}],222:[function(require,module,exports){
+"use strict";
+
+var React = require("react");
+
+var _require = require("react-bootstrap");
+
+var Panel = _require.Panel;
+var Jumbotron = _require.Jumbotron;
+var Button = _require.Button;
+
+var Moment = require("moment");
+var dummyImgSrc = "http://cdn.shopify.com/s/files/1/0228/4239/collections/placeholder_large.jpg";
+module.exports = React.createClass({
+	displayName: "exports",
+
+	render: function render() {
+
+		return React.createElement(
+			Jumbotron,
+			null,
+			React.createElement(
+				"h1",
+				null,
+				"Hello, Freeloaders!"
+			),
+			React.createElement(
+				"p",
+				null,
+				React.createElement(
+					Button,
+					{ bsStyle: "primary" },
+					"Learn more"
+				)
+			)
 		);
 	}
 });

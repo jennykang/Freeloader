@@ -4,6 +4,7 @@ var Bootstrap = require('react-bootstrap');
 var Immutable = require('immutable');
 
 var ListingView = require('./components/listing');
+var LoginView = require('./components/login');
 
 var Parse = require('parse').Parse;
 
@@ -30,13 +31,6 @@ class NavBar extends React.Component {
 		);
 	}
 }
-
-var data = [
-	{title: 'sample test', active: true, description: 'asdf asd fasdf asd fasd'},
-	{title: 'sample test', active: true, description: 'asdf asd fasdf asd fasd'},
-	{title: 'sample test', active: true, description: 'asdf asd fasdf asd fasd'},
-	{title: 'sample test', active: true, description: 'asdf asd fasdf asd fasd'},
-];
 
 class App extends React.Component {
 	constructor(props) {
@@ -84,6 +78,7 @@ class App extends React.Component {
 			<div>
 				<NavBar />
 				<div className="container">
+					<LoginView />
 					<ListingView data={listings} />
 				</div>
 			</div>
