@@ -14,12 +14,19 @@ module.exports = React.createClass({
 
 		var elems = this.props.data.map((e) => {
 			var date =  'Happening ' + Moment(e.start).fromNow();
+			date = active ? 'Happening Now!!' : date;
 			// var imgSrc = dummyImgSrc;
+			var active = e.active;
 			var imgSrc = e.image ? e.image.url() : dummyImgSrc;
 			var title = <h1> { e.title } </h1>;
-			var footer = <span> { date } </span>
+			var footer = <span> { date } </span>;
 			return (
-				<Panel header={title} footer={footer} style={
+				<Panel
+					header={title}
+					footer={footer}
+					bsStyle={ active ? 'success' : '' }
+
+					style={
 					{
 						marginRight: 'auto', marginLeft: 'auto', maxWidth: '70%',
 						cursor: 'pointer',

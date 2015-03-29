@@ -86,7 +86,10 @@ module.exports = React.createClass({
 			return <div> loading ... </div>
 		}
 		var e = this.props.data;
+		var active = e.active;
 		var date =  'Happening ' + Moment(e.start).fromNow();
+		date = active ? 'Happening Now!!' : date;
+
 		// var imgSrc = dummyImgSrc;
 		var imgSrc = e.image ? e.image.url() : dummyImgSrc;
 		var title = <h1> { e.title } </h1>;
@@ -97,7 +100,7 @@ module.exports = React.createClass({
 				<span id="video-elem" />
 			);
 		}
-		else {
+		else if (active) {
 			videoElem = (
 				<div>
 				<Button bsStyle='info' onClick={this.participate.bind(this)}>Participate</Button>
@@ -109,7 +112,9 @@ module.exports = React.createClass({
 		return (
 			<Panel header={title} footer={footer} style={
 				{ marginRight: 'auto', marginLeft: 'auto', maxWidth: '70%'}
-			}>
+			}
+			bsStyle={ active ? 'success' : '' }
+			>
 				<img src={imgSrc} style={ { width: '100%' } } />
 				<div>{ e.description }</div>
 				{ videoElem }

@@ -76,8 +76,9 @@ var App = (function (_React$Component2) {
 		_get(Object.getPrototypeOf(App.prototype), "constructor", this).call(this, props);
 		this.state = {
 			data: Immutable.Map({
-				login: false, loading: false, location: undefined, listings: undefined, error: null,
-				listing: null
+				login: false, loading: false,
+				location: undefined, listings: undefined,
+				error: null, listing: null
 			})
 		};
 	}
@@ -130,7 +131,6 @@ var App = (function (_React$Component2) {
 				}
 
 				console.log("got back parsed listings:", listings);
-
 				var body = null;
 				var listing = this.state.data.get("listing");
 				if (listing) {
@@ -44430,7 +44430,10 @@ module.exports = React.createClass({
 			);
 		}
 		var e = this.props.data;
+		var active = e.active;
 		var date = "Happening " + Moment(e.start).fromNow();
+		date = active ? "Happening Now!!" : date;
+
 		// var imgSrc = dummyImgSrc;
 		var imgSrc = e.image ? e.image.url() : dummyImgSrc;
 		var title = React.createElement(
@@ -44450,7 +44453,7 @@ module.exports = React.createClass({
 		var videoElem = null;
 		if (this.state.record) {
 			videoElem = React.createElement("span", { id: "video-elem" });
-		} else {
+		} else if (active) {
 			videoElem = React.createElement(
 				"div",
 				null,
@@ -44469,7 +44472,9 @@ module.exports = React.createClass({
 
 		return React.createElement(
 			Panel,
-			{ header: title, footer: footer, style: { marginRight: "auto", marginLeft: "auto", maxWidth: "70%" } },
+			{ header: title, footer: footer, style: { marginRight: "auto", marginLeft: "auto", maxWidth: "70%" },
+				bsStyle: active ? "success" : ""
+			},
 			React.createElement("img", { src: imgSrc, style: { width: "100%" } }),
 			React.createElement(
 				"div",
@@ -44511,7 +44516,9 @@ module.exports = React.createClass({
 
 		var elems = this.props.data.map(function (e) {
 			var date = "Happening " + Moment(e.start).fromNow();
+			date = active ? "Happening Now!!" : date;
 			// var imgSrc = dummyImgSrc;
+			var active = e.active;
 			var imgSrc = e.image ? e.image.url() : dummyImgSrc;
 			var title = React.createElement(
 				"h1",
@@ -44529,7 +44536,12 @@ module.exports = React.createClass({
 			);
 			return React.createElement(
 				Panel,
-				{ header: title, footer: footer, style: {
+				{
+					header: title,
+					footer: footer,
+					bsStyle: active ? "success" : "",
+
+					style: {
 						marginRight: "auto", marginLeft: "auto", maxWidth: "70%",
 						cursor: "pointer" }, onClick: function () {
 						return _this.props.onListing(e);
